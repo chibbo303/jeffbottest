@@ -1,5 +1,5 @@
 script_name('Jefferson Bot') 
-script_version("1.0a")
+script_version("1.2a")
 script_properties("work-in-pause")
 
 require 'lib.sampfuncs'
@@ -44,7 +44,7 @@ nazvanie = 'Jefferson Bot'
 function main()
     if not isSampLoaded()  then return end
     while not isSampAvailable() do wait(100) end
-    tag("Скрипт успешно запущен | Версия скрипта: {04a6ff}1.0a")
+    tag("Скрипт успешно запущен | Версия скрипта: {04a6ff}1.2a")
 	--autoupdate("https://raw.githubusercontent.com/chibbo303/jeffersonbot/main/version.json", '['..string.upper(thisScript().name)..']: ') -- actual version
 	--autoupdate("https://drive.usercontent.google.com/download?id=1vL7R2kjiDNLQv99BGjFV2WUKUK88dD_G&export=download&authuser=0&confirm=t&uuid=985e82a3-69f0-4fc2-904b-a89369b48196&at=APZUnTV1nJ33DWt_0IbUZMqr37fw:1704181967897", '['..string.upper(thisScript().name)..']: ') --GDrive
 	autoupdate("https://raw.githubusercontent.com/chibbo303/jeffbottest/main/version.json", '['..string.upper(thisScript().name)..']: ') --test version
