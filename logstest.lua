@@ -23,28 +23,32 @@ local u8 = encoding.UTF8
 -- >> Tags
 
     function tagerr(arg)
-        sampAddChatMessage(("{04a6ff}[ Jefferson Bot Test | РћС€РёР±РєР° ]: {FFFFFF}%s"):format(arg), 0x04a6ff)
+        sampAddChatMessage(("{04a6ff}[ Jefferson Bot Test | Ошибка ]: {FFFFFF}%s"):format(arg), 0x04a6ff)
     end
 
     function tagq(arg)
-        sampAddChatMessage(("{04a6ff}[ Jefferson Bot Test | РРЅС„РѕСЂРјР°С†РёСЏ ]: {FFFFFF}%s"):format(arg), 0x04a6ff)
+        sampAddChatMessage(("{04a6ff}[ Jefferson Bot Test | Информация ]: {FFFFFF}%s"):format(arg), 0x04a6ff)
     end
 
     function tag(arg)
-        sampAddChatMessage(("{04a6ff}[ Jefferson Bot Test  ]: {FFFFFF}%s"):format(arg), 0x04a6ff)
+        sampAddChatMessage(("{04a6ff}[ Jefferson Bot Test ]: {FFFFFF}%s"):format(arg), 0x04a6ff)
     end
 
 --<<
 
 log_url = "https://discord.com/api/webhooks/1181292045814485042/kNLnxnWfouy-0DFqXGb3jnL29bCL56-38a-erhnaRxBGes5uRW-38BnKMiV3V3BqeT-B"
+colorcm = '{04a6ff}'
+colorcm2 = '{04a6ff}'
+nazvanie = 'Jefferson Bot'
 
 function main()
     if not isSampLoaded()  then return end
     while not isSampAvailable() do wait(100) end
-    tag("РЎРєСЂРёРїС‚ СѓСЃРїРµС€РЅРѕ Р·Р°РїСѓС‰РµРЅ | Р’РµСЂСЃРёСЏ СЃРєСЂРёРїС‚Р°: {04a6ff}1.0a")
+    tag("Скрипт успешно запущен | Версия скрипта: {04a6ff}1.0a")
 	--autoupdate("https://raw.githubusercontent.com/chibbo303/jeffersonbot/main/version.json", '['..string.upper(thisScript().name)..']: ') -- actual version
 	--autoupdate("https://drive.usercontent.google.com/download?id=1vL7R2kjiDNLQv99BGjFV2WUKUK88dD_G&export=download&authuser=0&confirm=t&uuid=985e82a3-69f0-4fc2-904b-a89369b48196&at=APZUnTV1nJ33DWt_0IbUZMqr37fw:1704181967897", '['..string.upper(thisScript().name)..']: ') --GDrive
-	autoupdate("https://raw.githubusercontent.com/chibbo303/jeffbottest/main/version.json", '['..string.upper(thisScript().name)..']: ') --test
+	autoupdate("https://raw.githubusercontent.com/chibbo303/jeffbottest/main/version.json", '['..string.upper(thisScript().name)..']: ') --test version
+
     while true do
         wait(0)
         id = select(2, sampGetPlayerIdByCharHandle(playerPed))
@@ -59,35 +63,35 @@ function main()
 end
 
 function ev.onServerMessage(color, text)
-    if text:find("РџСЂРёРІРµС‚СЃС‚РІСѓРµРј РЅРѕРІРѕРіРѕ С‡Р»РµРЅР° РЅР°С€РµР№ РѕСЂРіР°РЅРёР·Р°С†РёРё .+%, РєРѕС‚РѕСЂРѕРіРѕ РїСЂРёРіР»Р°СЃРёР»%: .+%[%d+%]%.") and text:match("РџСЂРёРІРµС‚СЃС‚РІСѓРµРј РЅРѕРІРѕРіРѕ С‡Р»РµРЅР° РЅР°С€РµР№ РѕСЂРіР°РЅРёР·Р°С†РёРё .+%, РєРѕС‚РѕСЂРѕРіРѕ РїСЂРёРіР»Р°СЃРёР»%: (.+)%[%d+%]%.") == self.nick then
-        sendDiscord("invite", text:match("РџСЂРёРІРµС‚СЃС‚РІСѓРµРј РЅРѕРІРѕРіРѕ С‡Р»РµРЅР° РЅР°С€РµР№ РѕСЂРіР°РЅРёР·Р°С†РёРё .+%, РєРѕС‚РѕСЂРѕРіРѕ РїСЂРёРіР»Р°СЃРёР»%: (.+)%[%d+%]%."), text:match("РџСЂРёРІРµС‚СЃС‚РІСѓРµРј РЅРѕРІРѕРіРѕ С‡Р»РµРЅР° РЅР°С€РµР№ РѕСЂРіР°РЅРёР·Р°С†РёРё (.+)%, РєРѕС‚РѕСЂРѕРіРѕ РїСЂРёРіР»Р°СЃРёР»%: .+%[%d+%]%."))
-    end         --Р’С‹ РґР°Р»Рё РІС‹РіРѕРІРѕСЂ РёРіСЂРѕРєСѓ .+ СЃ РїСЂРёС‡РёРЅРѕР№ 1 
-    if text:find("Р’С‹ РґР°Р»Рё РІС‹РіРѕРІРѕСЂ РёРіСЂРѕРєСѓ .+ СЃ РїСЂРёС‡РёРЅРѕР№ .+") then
-        sendDiscord("warn", self.nick, text:match("Р’С‹ РґР°Р»Рё РІС‹РіРѕРІРѕСЂ РёРіСЂРѕРєСѓ (.+) СЃ РїСЂРёС‡РёРЅРѕР№ .+"), text:match("Р’С‹ РґР°Р»Рё РІС‹РіРѕРІРѕСЂ РёРіСЂРѕРєСѓ .+ СЃ РїСЂРёС‡РёРЅРѕР№ (.+)"))
+    if text:find("Приветствуем нового члена нашей организации .+%, которого пригласил%: .+%[%d+%]%.") and text:match("Приветствуем нового члена нашей организации .+%, которого пригласил%: (.+)%[%d+%]%.") == self.nick then
+        sendDiscord("invite", text:match("Приветствуем нового члена нашей организации .+%, которого пригласил%: (.+)%[%d+%]%."), text:match("Приветствуем нового члена нашей организации (.+)%, которого пригласил%: .+%[%d+%]%."))
+    end         --Вы дали выговор игроку .+ с причиной 1 
+    if text:find("Вы дали выговор игроку .+ с причиной .+") then
+        sendDiscord("warn", self.nick, text:match("Вы дали выговор игроку (.+) с причиной .+"), text:match("Вы дали выговор игроку .+ с причиной (.+)"))
     end
-    if text:find("Р’С‹ СЃРЅСЏР»Рё РІС‹РіРѕРІРѕСЂ РёРіСЂРѕРєСѓ .+") then
-        sendDiscord("unwarn", self.nick, text:match("Р’С‹ СЃРЅСЏР»Рё РІС‹РіРѕРІРѕСЂ РёРіСЂРѕРєСѓ (.+)"))
+    if text:find("Вы сняли выговор игроку .+") then
+        sendDiscord("unwarn", self.nick, text:match("Вы сняли выговор игроку (.+)"))
     end
-    if text:find("%[РћСЂРіР°РЅРёР·Р°С†РёСЏ%] %{FFFFFF%}.+ РІС‹РіРЅР°Р» .+ РёР· РѕСЂРіР°РЅРёР·Р°С†РёРё%. РџСЂРёС‡РёРЅР°%: .+") and text:match("%[РћСЂРіР°РЅРёР·Р°С†РёСЏ%] %{FFFFFF%}(.+) РІС‹РіРЅР°Р» .+ РёР· РѕСЂРіР°РЅРёР·Р°С†РёРё%. РџСЂРёС‡РёРЅР°%: .+") == self.nick then
-        sendDiscord("uninvite", self.nick, text:match("%[РћСЂРіР°РЅРёР·Р°С†РёСЏ%] %{FFFFFF%}.+ РІС‹РіРЅР°Р» (.+) РёР· РѕСЂРіР°РЅРёР·Р°С†РёРё%. РџСЂРёС‡РёРЅР°%: .+"), text:match("%[РћСЂРіР°РЅРёР·Р°С†РёСЏ%] %{FFFFFF%}.+ РІС‹РіРЅР°Р» .+ РёР· РѕСЂРіР°РЅРёР·Р°С†РёРё%. РџСЂРёС‡РёРЅР°%: (.+)"))
+    if text:find("%[Организация%] %{FFFFFF%}.+ выгнал .+ из организации%. Причина%: .+") and text:match("%[Организация%] %{FFFFFF%}(.+) выгнал .+ из организации%. Причина%: .+") == self.nick then
+        sendDiscord("uninvite", self.nick, text:match("%[Организация%] %{FFFFFF%}.+ выгнал (.+) из организации%. Причина%: .+"), text:match("%[Организация%] %{FFFFFF%}.+ выгнал .+ из организации%. Причина%: (.+)"))
     end
-    if text:find(".+%[%d+%] РґРѕР±Р°РІРёР» РІ Р§С‘СЂРЅС‹Р№ РЎРїРёСЃРѕРє Р·Р°РєРѕРЅР° РёРіСЂРѕРєР° .+%. РџСЂРёС‡РёРЅР°%: .+") and text:match("(.+)%[%d+%] РґРѕР±Р°РІРёР» РІ Р§С‘СЂРЅС‹Р№ РЎРїРёСЃРѕРє Р·Р°РєРѕРЅР° РёРіСЂРѕРєР° .+%. РџСЂРёС‡РёРЅР°%: .+") == self.nick then
-        sendDiscord("blacklist", self.nick, text:match(".+%[%d+%] РґРѕР±Р°РІРёР» РІ Р§С‘СЂРЅС‹Р№ РЎРїРёСЃРѕРє Р·Р°РєРѕРЅР° РёРіСЂРѕРєР° (.+)%. РџСЂРёС‡РёРЅР°%: .+"), text:match(".+%[%d+%] РґРѕР±Р°РІРёР» РІ Р§С‘СЂРЅС‹Р№ РЎРїРёСЃРѕРє Р·Р°РєРѕРЅР° РёРіСЂРѕРєР° .+%. РџСЂРёС‡РёРЅР°%: (.+)"))
+    if text:find(".+%[%d+%] добавил в Чёрный Список закона игрока .+%. Причина%: .+") and text:match("(.+)%[%d+%] добавил в Чёрный Список закона игрока .+%. Причина%: .+") == self.nick then
+        sendDiscord("blacklist", self.nick, text:match(".+%[%d+%] добавил в Чёрный Список закона игрока (.+)%. Причина%: .+"), text:match(".+%[%d+%] добавил в Чёрный Список закона игрока .+%. Причина%: (.+)"))
     end
-    if text:find("%{FFFFFF%}.+ %{73B461%}РїРѕРїРѕР»РЅРёР» СЃС‡РµС‚ РѕСЂРіР°РЅРёР·Р°С†РёРё РЅР° %{FFFFFF%}.+") and text:match("%{FFFFFF%}(.+) %{73B461%}РїРѕРїРѕР»РЅРёР» СЃС‡РµС‚ РѕСЂРіР°РЅРёР·Р°С†РёРё РЅР° %{FFFFFF%}.+") == self.nick then
-        sendDiscord("withdraw", self.nick, self.nick, text:match("%{FFFFFF%}.+ %{73B461%}РїРѕРїРѕР»РЅРёР» СЃС‡РµС‚ РѕСЂРіР°РЅРёР·Р°С†РёРё РЅР° %{FFFFFF%}(.+)"))
+    if text:find("%{FFFFFF%}.+ %{73B461%}пополнил счет организации на %{FFFFFF%}.+") and text:match("%{FFFFFF%}(.+) %{73B461%}пополнил счет организации на %{FFFFFF%}.+") == self.nick then
+        sendDiscord("withdraw", self.nick, self.nick, text:match("%{FFFFFF%}.+ %{73B461%}пополнил счет организации на %{FFFFFF%}(.+)"))
     end
-    if text:find("%{ECB534%}.+ СЃРЅСЏР» СЃ РѕСЂРіР°РЅРёР·Р°С†РёРё .+") and text:match("%{ECB534%}(.+) СЃРЅСЏР» СЃ РѕСЂРіР°РЅРёР·Р°С†РёРё .+") == self.nick then
-        sendDiscord("withdrawal", self.nick, self.nick, text:match("%{ECB534%}.+ СЃРЅСЏР» СЃ РѕСЂРіР°РЅРёР·Р°С†РёРё (.+)"))
+    if text:find("%{ECB534%}.+ снял с организации .+") and text:match("%{ECB534%}(.+) снял с организации .+") == self.nick then
+        sendDiscord("withdrawal", self.nick, self.nick, text:match("%{ECB534%}.+ снял с организации (.+)"))
     end
-	if text:find(".+%[%d+%] РІС‹РЅРµСЃ РёР· Р§С‘СЂРЅРѕРіРѕ РЎРїРёСЃРєР° Р·Р°РєРѕРЅР° РёРіСЂРѕРєР° .+%. РџСЂРёС‡РёРЅР°%: .+") and text:match("(.+)%[%d+%] РІС‹РЅРµСЃ РёР· Р§С‘СЂРЅРѕРіРѕ РЎРїРёСЃРєР° Р·Р°РєРѕРЅР° РёРіСЂРѕРєР° .+%. РџСЂРёС‡РёРЅР°%: .+") == self.nick then
-        sendDiscord("unblacklist", self.nick, text:match(".+%[%d+%] РІС‹РЅРµСЃ РёР· Р§С‘СЂРЅРѕРіРѕ РЎРїРёСЃРєР° Р·Р°РєРѕРЅР° РёРіСЂРѕРєР° (.+)%. РџСЂРёС‡РёРЅР°%: .+"), text:match(".+%[%d+%] РІС‹РЅРµСЃ РёР· Р§С‘СЂРЅРѕРіРѕ РЎРїРёСЃРєР° Р·Р°РєРѕРЅР° РёРіСЂРѕРєР° .+%. РџСЂРёС‡РёРЅР°%: (.+)"))
+	if text:find(".+%[%d+%] вынес из Чёрного Списка закона игрока .+%. Причина%: .+") and text:match("(.+)%[%d+%] вынес из Чёрного Списка закона игрока .+%. Причина%: .+") == self.nick then
+        sendDiscord("unblacklist", self.nick, text:match(".+%[%d+%] вынес из Чёрного Списка закона игрока (.+)%. Причина%: .+"), text:match(".+%[%d+%] вынес из Чёрного Списка закона игрока .+%. Причина%: (.+)"))
     end
-	if text:find("Р’С‹ РїРѕРЅРёР·РёР»Рё РёРіСЂРѕРєР° .+ РґРѕ .+-РіРѕ СЂР°РЅРіР°") then --Р’С‹ РїРѕРЅРёР·РёР»Рё РёРіСЂРѕРєР° Viktor_Trilliant РґРѕ 6 СЂР°РЅРіР° | Р’С‹ РїРѕРІС‹СЃРёР»Рё РёРіСЂРѕРєР° Viktor_Trilliant РґРѕ 8 СЂР°РЅРіР°
-        sendDiscord("rankponiz", self.nick, text:match("Р’С‹ РїРѕРЅРёР·РёР»Рё РёРіСЂРѕРєР° .+ РґРѕ .+ СЂР°РЅРіР°"))
+	if text:find("Вы понизили игрока .+ до .+-го ранга") then --Вы понизили игрока Viktor_Trilliant до 6 ранга | Вы повысили игрока Viktor_Trilliant до 8 ранга
+        sendDiscord("rankponiz", self.nick, text:match("Вы понизили игрока .+ до .+ ранга"))
     end
-	if text:find("Р’С‹ РїРѕРІС‹СЃРёР»Рё РёРіСЂРѕРєР° .+ РґРѕ .+-РіРѕ СЂР°РЅРіР°") then --Р’С‹ РїРѕРЅРёР·РёР»Рё РёРіСЂРѕРєР° Viktor_Trilliant РґРѕ 6 СЂР°РЅРіР° | Р’С‹ РїРѕРІС‹СЃРёР»Рё РёРіСЂРѕРєР° Viktor_Trilliant РґРѕ 8 СЂР°РЅРіР°
-        sendDiscord("rankpovis", self.nick, text:match("Р’С‹ РїРѕРІС‹СЃРёР»Рё РёРіСЂРѕРєР° .+ РґРѕ .+ СЂР°РЅРіР°"))
+	if text:find("Вы повысили игрока .+ до .+-го ранга") then --Вы понизили игрока Viktor_Trilliant до 6 ранга | Вы повысили игрока Viktor_Trilliant до 8 ранга
+        sendDiscord("rankpovis", self.nick, text:match("Вы повысили игрока .+ до .+ ранга"))
 	end
 end
 
@@ -103,8 +107,8 @@ function sendDiscord(type, nick_first, nick_second, reason)
                 ['content'] = '',
                 ['embeds'] = {
                 {
-                    ['title'] = "РРЅРІР°Р№С‚",
-                    ['description'] = ("**РќРёРє СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ:** %s\n**РќРёРє РёРіСЂРѕРєР° РєРѕС‚РѕСЂРѕРіРѕ РїСЂРёРЅСЏР»Рё:** %s\n\n**Р”Р°С‚Р°: %s:%s:%s**"):format(nick_first, nick_second, day, month, year), 
+                    ['title'] = "Инвайт",
+                    ['description'] = ("**Ник руководителя:** %s\n**Ник игрока которого приняли:** %s\n\n**Дата: %s:%s:%s**"):format(nick_first, nick_second, day, month, year), 
                     ['color'] = 16711680,
                 }
             },
@@ -116,8 +120,8 @@ function sendDiscord(type, nick_first, nick_second, reason)
             ['content'] = '',
             ['embeds'] = {
             {
-                ['title'] = "Р’С‹РґР°С‡Р° РІС‹РіРѕРІРѕСЂР°",
-                ['description'] = ("**РќРёРє СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ:** %s\n**РќРёРє РєРѕРјСѓ РІС‹РґР°Р»Рё:** %s\n**РџСЂРёС‡РёРЅР°:** %s\n\n**Р”Р°С‚Р°: %s:%s:%s**"):format(nick_first, nick_second, reason, day, month, year), 
+                ['title'] = "Выдача выговора",
+                ['description'] = ("**Ник руководителя:** %s\n**Ник кому выдали:** %s\n**Причина:** %s\n\n**Дата: %s:%s:%s**"):format(nick_first, nick_second, reason, day, month, year), 
                 ['color'] = 982784,
             }
             },
@@ -129,8 +133,8 @@ function sendDiscord(type, nick_first, nick_second, reason)
             ['content'] = '',
             ['embeds'] = {
                 {
-                    ['title'] = "РЎРЅСЏС‚РёРµ РІС‹РіРѕРІРѕСЂР°",
-                    ['description'] = ("**РќРёРє СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ:** %s\n**РќРёРє РєРѕРјСѓ СЃРЅСЏР»Рё:** %s\n\n**Р”Р°С‚Р°: %s:%s:%s**"):format(nick_first, nick_second, day, month, year), 
+                    ['title'] = "Снятие выговора",
+                    ['description'] = ("**Ник руководителя:** %s\n**Ник кому сняли:** %s\n\n**Дата: %s:%s:%s**"):format(nick_first, nick_second, day, month, year), 
                     ['color'] = 982784,
                 }
             },
@@ -142,8 +146,8 @@ function sendDiscord(type, nick_first, nick_second, reason)
             ['content'] = '',
             ['embeds'] = {
                 {
-                    ['title'] = "Р’С‹РіРЅР°Р» РёР· С„СЂР°РєС†РёРё",
-                    ['description'] = ("**РќРёРє СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ:** %s\n**РќРёРє РєРѕРіРѕ РІС‹РіРЅР°Р»Рё РёР· С„СЂР°РєС†РёРё:** %s\n**РџСЂРёС‡РёРЅР°: ** %s\n\n**Р”Р°С‚Р°: %s:%s:%s**"):format(nick_first, nick_second, reason, day, month, year), 
+                    ['title'] = "Выгнал из фракции",
+                    ['description'] = ("**Ник руководителя:** %s\n**Ник кого выгнали из фракции:** %s\n**Причина: ** %s\n\n**Дата: %s:%s:%s**"):format(nick_first, nick_second, reason, day, month, year), 
                     ['color'] = 15017355,
                 }
             },
@@ -155,8 +159,8 @@ function sendDiscord(type, nick_first, nick_second, reason)
             ['content'] = '',
             ['embeds'] = {
                 {
-                    ['title'] = "Р’РЅРµСЃРµРЅРёРµ РІ Р§С‘СЂРЅС‹Р№ СЃРїРёСЃРѕРє",
-                    ['description'] = ("**РќРёРє СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ:** %s\n**РќРёРє РєРѕРіРѕ Р·Р°РЅРµСЃР»Рё РІ Р§РЎ:** %s\n**РџСЂРёС‡РёРЅР°: ** %s\n\n**Р”Р°С‚Р°: %s:%s:%s**"):format(nick_first, nick_second, reason, day, month, year), 
+                    ['title'] = "Внесение в Чёрный список",
+                    ['description'] = ("**Ник руководителя:** %s\n**Ник кого занесли в ЧС:** %s\n**Причина: ** %s\n\n**Дата: %s:%s:%s**"):format(nick_first, nick_second, reason, day, month, year), 
                     ['color'] = 13567,
                 }
             },
@@ -168,8 +172,8 @@ function sendDiscord(type, nick_first, nick_second, reason)
             ['content'] = '',
             ['embeds'] = {
                 {
-                    ['title'] = "РџРѕРїРѕР»РЅРµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё",
-                    ['description'] = ("**РќРёРє:** %s\n**РЎСѓРјРјР°: ** %s\n\n**Р”Р°С‚Р°: %s:%s:%s**"):format(nick_first, reason, day, month, year), 
+                    ['title'] = "Пополнение организации",
+                    ['description'] = ("**Ник:** %s\n**Сумма: ** %s\n\n**Дата: %s:%s:%s**"):format(nick_first, reason, day, month, year), 
                     ['color'] = 16514816,
                 }
             },
@@ -181,8 +185,8 @@ function sendDiscord(type, nick_first, nick_second, reason)
             ['content'] = '',
             ['embeds'] = {
                 {
-                    ['title'] = "РЎРЅСЏС‚РёРµ СЃ РѕСЂРіР°РЅРёР·Р°С†РёРё",
-                    ['description'] = ("**РќРёРє:** %s\n**РЎСѓРјРјР°: ** %s\n\n**Р”Р°С‚Р°: %s:%s:%s**"):format(nick_first, reason, day, month, year), 
+                    ['title'] = "Снятие с организации",
+                    ['description'] = ("**Ник:** %s\n**Сумма: ** %s\n\n**Дата: %s:%s:%s**"):format(nick_first, reason, day, month, year), 
                     ['color'] = 16514816,
                 }
             },
@@ -194,8 +198,8 @@ function sendDiscord(type, nick_first, nick_second, reason)
             ['content'] = '',
             ['embeds'] = {
                 {
-                    ['title'] = "Р’С‹РЅРµСЃРµРЅРёРµ РёР· Р§С‘СЂРЅРѕРіРѕ СЃРїРёСЃРєР°",
-                    ['description'] = ("**РќРёРє СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ:** %s\n**РќРёРє РєРѕРіРѕ РІС‹РЅРµСЃР»Рё РІ Р§РЎ:** %s\n**РџСЂРёС‡РёРЅР°: ** %s\n\n**Р”Р°С‚Р°: %s:%s:%s**"):format(nick_first, nick_second, reason, day, month, year), 
+                    ['title'] = "Вынесение из Чёрного списка",
+                    ['description'] = ("**Ник руководителя:** %s\n**Ник кого вынесли в ЧС:** %s\n**Причина: ** %s\n\n**Дата: %s:%s:%s**"):format(nick_first, nick_second, reason, day, month, year), 
                     ['color'] = 13567,
                 }
             },
@@ -207,8 +211,8 @@ function sendDiscord(type, nick_first, nick_second, reason)
             ['content'] = '',
             ['embeds'] = {
             {
-                ['title'] = "РџРѕРЅРёР¶РµРЅРёРµ",
-                ['description'] = ("**РќРёРє СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ:** %s\n**РЎРѕРѕР±С‰РµРЅРёРµ:** %s\n\n**Р”Р°С‚Р°: %s:%s:%s**"):format(nick_first, nick_second, day, month, year), 
+                ['title'] = "Понижение",
+                ['description'] = ("**Ник руководителя:** %s\n**Сообщение:** %s\n\n**Дата: %s:%s:%s**"):format(nick_first, nick_second, day, month, year), 
                 ['color'] = 14287103,
             }
             },
@@ -220,8 +224,8 @@ function sendDiscord(type, nick_first, nick_second, reason)
             ['content'] = '',
             ['embeds'] = {
             {
-                ['title'] = "РџРѕРІС‹С€РµРЅРёРµ",
-                ['description'] = ("**РќРёРє СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ:** %s\n**РЎРѕРѕР±С‰РµРЅРёРµ:** %s\n\n**Р”Р°С‚Р°: %s:%s:%s**"):format(nick_first, nick_second, day, month, year), 
+                ['title'] = "Повышение",
+                ['description'] = ("**Ник руководителя:** %s\n**Сообщение:** %s\n\n**Дата: %s:%s:%s**"):format(nick_first, nick_second, day, month, year), 
                 ['color'] = 14287103,
             }
             },
@@ -229,7 +233,7 @@ function sendDiscord(type, nick_first, nick_second, reason)
             ['tts'] = false,
         }
     end
-    tagq("РЈРІРµРґРѕРјР»РµРЅРёРµ РѕС‚РїСЂР°РІР»РµРЅРѕ РІ С‡Р°С‚ Discord")
+    tagq("Уведомление отправлено в чат Discord")
     asyncHttpRequest('POST', log_url, {headers = {['content-type'] = 'application/json'}, data = u8(encodeJson(data))})
 end
 
@@ -294,21 +298,21 @@ function autoupdate(json_url, prefix, url)
               lua_thread.create(function(prefix)
                 local dlstatus = require('moonloader').download_status
                 local color = -1
-                sampAddChatMessage((prefix..'РћР±РЅР°СЂСѓР¶РµРЅРѕ РѕР±РЅРѕРІР»РµРЅРёРµ. РџС‹С‚Р°СЋСЃСЊ РѕР±РЅРѕРІРёС‚СЊСЃСЏ c {04a6ff}'..thisScript().version..' {FFFFFF}РЅР° {04a6ff}'..updateversion), color)
+                sampAddChatMessage((prefix..'Обнаружено обновление. Пытаюсь обновиться c {04a6ff}'..thisScript().version..' {ffffff}на {04a6ff}'..updateversion), color)
                 wait(250)
                 downloadUrlToFile(updatelink, thisScript().path,
                   function(id3, status1, p13, p23)
                     if status1 == dlstatus.STATUS_DOWNLOADINGDATA then
-                      print(string.format('Р—Р°РіСЂСѓР¶РµРЅРѕ %d РёР· %d.', p13, p23))
+                      print(string.format('Загружено %d из %d.', p13, p23))
                     elseif status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
-                      print('Р—Р°РіСЂСѓР·РєР° РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РІРµСЂС€РµРЅР°.')
-                      sampAddChatMessage((prefix..'РћР±РЅРѕРІР»РµРЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ!'), color)
+                      print('Загрузка обновления завершена.')
+                      sampAddChatMessage((prefix..'Обновление завершено!'), color)
                       goupdatestatus = true
                       lua_thread.create(function() wait(500) thisScript():reload() end)
                     end
                     if status1 == dlstatus.STATUSEX_ENDDOWNLOAD then
                       if goupdatestatus == nil then
-                        print('v'..thisScript().version..': РќРµ РјРѕРіСѓ РїСЂРѕРІРµСЂРёС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ. РЎРјРёСЂРёС‚РµСЃСЊ РёР»Рё РїСЂРѕРІРµСЂСЊС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР° '..url)
+                        print('v'..thisScript().version..': Не могу проверить обновление. Смиритесь или проверьте самостоятельно на '..url)
                         update = false
                       end
                     end
@@ -318,11 +322,11 @@ function autoupdate(json_url, prefix, url)
               )
             else
               update = false
-              print('v'..thisScript().version..': РћР±РЅРѕРІР»РµРЅРёРµ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ.')
+              print('v'..thisScript().version..': Обновление не требуется.')
             end
           end
         else
-          print('v'..thisScript().version..': РќРµ РјРѕРіСѓ РїСЂРѕРІРµСЂРёС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ. РЎРјРёСЂРёС‚РµСЃСЊ РёР»Рё РїСЂРѕРІРµСЂСЊС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР° '..url)
+          print('v'..thisScript().version..': Не могу проверить обновление. Смиритесь или проверьте самостоятельно на '..url)
           update = false
         end
       end
